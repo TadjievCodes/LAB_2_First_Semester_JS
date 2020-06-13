@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <title>Lab 2</title>
+    <h1>IWD Airlines</h1>
+</head>
+
+<body>
+
+    <!-- We create few divs in order to dispaly messages through DOM Document object model and for that we use document.getElementById 
+      n select the ID we mentioned in DIv of HTML n then through .innerHTML we display that output message on the browser. So DOM manipulation is pretty useful-->
+    <div id="display_1">
+
+
+    </div>
+
+    <br>
+    <div id="output_2">
+
+
+    </div>
+    <br>
+    <div id="output_3">
+
+    </div>
+    <br>
+    <div id="output_4">
+
+    </div>
+    <script>
+        // we start our script JS within HTML
+        // step 3
+        //we store the alert n its data inside the variable n pop up an alert like Welcome to the IWD Airline the first alert that appears once loaded the page
+        var welcome = alert("Welcome to The IWD Airline!");
+        // step 4
+        //here we store data again with a prompt pop up how many passengers, seats and slogan with default values attached inside the string
+        var NumberOfPassengersOnWaitlist = prompt("Number of passengers on waitlist: ", "343");
+        var NumberOfSeatsOnEachFlight = prompt("Number of seats on each flight: ", "117");
+        var SloganOfTheAirline = prompt("Slogan of the airline: ", "Unlocking Potential");
+        // I used slightly longer names for variables as it was easy for me then to understand which variable would do what for me apparently
+
+        // step 5
+        //here we calculate the number of flights required to be made by dividing / the numberofPassenger onto Numberofseatsoneachflight 
+        var totalAmountFlights = NumberOfPassengersOnWaitlist / NumberOfSeatsOnEachFlight;
+        // step 6
+        //Next, we round the number of flights from 2.93 into 3 by in built functon or method called Math.round n pass the variable totalAmountFlights so it gets rounded
+        totalAmountFlights = Math.round(totalAmountFlights);
+
+        // step 7
+        //in here we calculate the available seats by multiplying totalFlights number into seats that are actaully available in the plane like in our example
+        var availableSeats = totalAmountFlights * NumberOfSeatsOnEachFlight;
+
+        // step 8
+        /*here we check if passengers remaining on the waiting list greater than or equal to >= availableSeats in the plane and then we assign the remainingPassegners
+        which is 0 and making it equal to numberofPassengersonWaitlist n then subtracting the available seats from the same number. This is an IF conditional statement*/
+        var remainingPassengers = 0;
+        if (NumberOfPassengersOnWaitlist >= availableSeats) {
+            remainingPassengers = NumberOfPassengersOnWaitlist - availableSeats;
+        }
+
+        // step 9
+        /*we create a variable outputMessage and store our message there in a string While concatenatig variables to output the correct numbers but in order
+        to display it as  mentioned we use DOM via document,getElementById and attach the id from div of HTMl n .innerHTML lets us display the outputMessage
+        variable as follows*/
+        var outputMessage = "Number of the Passengers on the waiting list = " + NumberOfPassengersOnWaitlist + '<br>' + "Number of Available seats = " +
+            availableSeats + '<br>' + "Number of flights = " + totalAmountFlights;
+        document.getElementById("display_1").innerHTML = outputMessage;
+
+        // step 10
+        /*The same is done through DOM getElementBYId and .innerHTML to display the ouput but we just use different variables and different divs with its own unique 
+        ids kept in it. The interesting part of this code snippet that we use if statement to determine whether if its true okay display All 343 passengers will
+         fly today whereas, in the next part we use else so if it doesn't work with the first statement then display that 405 passengers will fly and 16 passengers
+          will remain on the waitlist like in our example*/
+
+        var displayMessage1 = ("All " + NumberOfPassengersOnWaitlist + " passengers will fly today!");
+        if (remainingPassengers === 0) {
+            document.getElementById("output_2").innerHTML = displayMessage1;
+        } else {
+            var displayMessage2 = (availableSeats + " passengers will fly. " + "<br>" + remainingPassengers + " passengers will remain on the waitlist for the next available flight.");
+            document.getElementById("output_3").innerHTML = displayMessage2;
+        }
+
+        //step 11
+        /*And here we display the Thank you for flying with IWD message with a concatenation of a variable Slogan so Slogan name appears and then display this 
+        message again via utilizing DOM getElementBYId and .innerHTML */
+        var displayMessage3 = ("Thank you for flying with IWD Airlines, " + SloganOfTheAirline);
+        document.getElementById("output_4").innerHTML = displayMessage3;
+
+        //End of the script within HTML page
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
